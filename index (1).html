@@ -1,0 +1,414 @@
+<!<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Wong lucu Official Store</title>
+  <meta name="description" content="Wong lucu Official Store - toko online contoh dengan fitur homepage, kategori, detail produk, keranjang, checkout (via WhatsApp), akun, blog, dan footer." />
+  <style>
+    :root{--accent:#ff6b6b;--muted:#666}
+    *{box-sizing:border-box}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;line-height:1.4;margin:0;background:#f7f7fb;color:#111}
+    header{background:#fff;border-bottom:1px solid #e6e6ef;position:sticky;top:0;z-index:50}
+    .container{max-width:1100px;margin:0 auto;padding:0 16px}
+    .topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand h1{margin:0;font-size:20px;color:var(--accent)}
+    nav ul{display:flex;gap:12px;list-style:none;padding:0;margin:0}
+    nav a{color:#222;text-decoration:none;padding:8px;border-radius:6px}
+    nav a:hover{background:#f0f0f5}
+    .search{display:flex;gap:8px;align-items:center}
+    .search input{padding:8px 12px;border:1px solid #e0e0e8;border-radius:8px;width:260px}
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 360px;gap:20px;padding:22px 0}
+    .slideshow{background:linear-gradient(180deg,#fff,#fff);border-radius:12px;padding:12px;overflow:hidden}
+    .slide{width:100%;height:320px;border-radius:8px;background-size:cover;background-position:center;transition:opacity .5s}
+    .promo-strip{display:flex;gap:8px;margin:12px 0}
+    .btn{background:var(--accent);color:#fff;padding:10px 14px;border-radius:8px;text-decoration:none}
+    /* Grid */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:#fff;padding:12px;border-radius:12px;border:1px solid #f0f0f5}
+    .card img{width:100%;height:180px;object-fit:cover;border-radius:8px}
+    .price{font-weight:700;color:var(--accent)}
+    .rating{color:#f2b01e}
+    /* Product page */
+    .product-detail{display:grid;grid-template-columns:420px 1fr;gap:18px}
+    .thumbs{display:flex;gap:8px;margin-top:8px}
+    .thumbs img{width:72px;height:72px;object-fit:cover;border-radius:6px;border:1px solid #eee;cursor:pointer}
+    .big{width:100%;height:420px;object-fit:contain;border-radius:8px;background:#fff}
+    /* Cart */
+    .cart-list{background:#fff;padding:12px;border-radius:10px}
+    .cart-row{display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px dashed #eee}
+    .qty{display:flex;gap:6px;align-items:center}
+    /* Footer */
+    footer{margin-top:28px;padding:28px 0;background:#fff;border-top:1px solid #e6e6ef}
+    .footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    /* responsive */
+    @media (max-width:1000px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.product-detail{grid-template-columns:1fr}}
+    @media (max-width:600px){.search input{width:120px}.grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}}
+    /* small utility */
+    .muted{color:var(--muted);font-size:13px}
+    .pill{padding:4px 8px;border-radius:999px;background:#f3f5ff;font-size:13px}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container topbar">
+      <div class="brand">
+        <img src="https://uploads.onecompiler.io/446nzz5ya/446s7d2x6/1000193341.png" alt="logo" style="width:48px;height:48px;border-radius:8px;object-fit:cover"/>
+        <h1>Wong lucu <small style="font-weight:600;color:#000000">Official Store</small></h1>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center">
+        <div class="search">
+          <input id="searchInput" placeholder="Cari produk..." />
+          <button class="btn" onclick="doSearch()">Cari</button>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="#home" onclick="showSection('home')">Home</a></li>
+            <li><a href="#produk" onclick="showSection('catalog')">Produk</a></li>
+            <li><a href="#blog" onclick="showSection('blog')">Blog</a></li>
+            <li><a href="#akun" onclick="showSection('account')">Akun</a></li>
+          </ul>
+        </nav>
+        <a class="pill" href="#cart" onclick="showSection('cart')">🛒 <span id="cartCount">0</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding-top:18px">
+    <!-- HOME -->
+            
+    </section>
+    <section id="home">
+      <div class="hero">
+        <div class="slideshow">
+          <div id="slides"></div>
+          <div class="promo-strip">
+            <div class="pill">Gratis Ongkir*</div>
+            <div class="pill">Diskon sampai 50%</div>
+            <div class="pill">Cashback 10%</div>
+          </div>
+          <div style="display:flex;gap:8px;align-items:center">
+            <a href="#produk" class="btn" onclick="showSection('catalog')">Belanja Sekarang</a>
+            <a class="muted" href="#blog" onclick="showSection('blog')">Baca Blog & Tips</a>
+          </div>
+        </div>
+        <aside style="align-self:start">
+          <div style="background:#fff;padding:12px;border-radius:12px;border:1px solid #f0f0f5">
+            <h3 style="margin:0 0 6px 0">Kategori</h3>
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px">
+              <li><a href="#" onclick="filterCategory('Semua')">Semua</a></li>
+ 
+              <li><a href="#" onclick="filterCategory('Fashion')">Fashion</a></li>
+           
+            </ul>
+          </div>
+          <div style="margin-top:12px;background:#fff;padding:12px;border-radius:12px;border:1px solid #f0f0f5">
+            <h4 style="margin:0 0 6px 0">Penawaran Hari Ini</h4>
+            <div class="muted">Voucher: WL10 - Diskon 10% pembelian pertama</div>
+          </div>
+        </aside>
+      </div>
+
+      <h2 style="margin:18px 0 6px 0">Produk Terlaris</h2>
+      <div id="bestsellers" class="grid"></div>
+
+      <h2 style="margin:18px 0 6px 0">Rekomendasi Untuk Anda</h2>
+      <div id="recommended" class="grid"></div>
+    </section>
+
+    <!-- CATALOG -->
+    <section id="catalog" style="display:none">
+      <h2>Semua Produk</h2>
+      <div style="display:flex;gap:12px;margin-bottom:12px;align-items:center">
+        <label class="muted">Urutkan:</label>
+        <select id="sortSelect" onchange="renderProducts()">
+          <option value="popular">Popularitas</option>
+          <option value="price_asc">Harga: Rendah ke Tinggi</option>
+          <option value="price_desc">Harga: Tinggi ke Rendah</option>
+        </select>
+      </div>
+      <div id="productGrid" class="grid"></div>
+    </section>
+
+    <!-- PRODUCT DETAIL (dynamic single view) -->
+    <section id="product" style="display:none">
+      <a href="#" onclick="showSection('catalog')">← Kembali ke Produk</a>
+      <div class="product-detail" id="productDetailArea"></div>
+    </section>
+
+    <!-- CART -->
+    <section id="cart" style="display:none">
+      <h2>Keranjang Anda</h2>
+      <div id="cartList"></div>
+      <div style="margin-top:12px;display:flex;gap:12px;align-items:center">
+        <button class="btn" onclick="checkout()">Checkout via WhatsApp</button>
+        <div class="muted">Catatan: Checkout akan membuka chat WhatsApp dengan admin.</div>
+      </div>
+    </section>
+
+    <!-- ACCOUNT -->
+    <section id="account" style="display:none">
+      <h2>Akun</h2>
+      <div style="display:grid;grid-template-columns:1fr 320px;gap:18px">
+        <div style="background:#fff;padding:12px;border-radius:12px;border:1px solid #f0f0f5">
+          <h3>Login</h3>
+          <input id="loginEmail" placeholder="Email" style="width:100%;padding:8px;margin-bottom:8px" />
+          <input id="loginPass" type="password" placeholder="Password" style="width:100%;padding:8px;margin-bottom:8px" />
+          <button class="btn" onclick="fakeLogin()">Masuk</button>
+        </div>
+        <div style="background:#fff;padding:12px;border-radius:12px;border:1px solid #f0f0f5">
+          <h3>Daftar</h3>
+          <input id="regName" placeholder="Nama" style="width:100%;padding:8px;margin-bottom:8px" />
+          <input id="regEmail" placeholder="Email" style="width:100%;padding:8px;margin-bottom:8px" />
+          <input id="regPass" type="password" placeholder="Password" style="width:100%;padding:8px;margin-bottom:8px" />
+          <button class="btn" onclick="fakeRegister()">Daftar</button>
+        </div>
+      </div>
+      <div id="accountArea" style="margin-top:12px"></div>
+    </section>
+
+    <!-- BLOG -->
+    <section id="blog" style="display:none">
+      <h2>Blog & Tips</h2>
+      <article style="background:#fff;padding:12px;border-radius:12px;border:1px solid #f0f0f5;margin-bottom:12px">
+        <h3>7 Tips Belanja Online Aman</h3>
+        <p class="muted">Pelajari cara memilih penjual terpercaya, cek ulasan, dan manfaatkan metode pembayaran aman.</p>
+        <a href="#" class="btn" onclick="showSection('blog')">Baca Selengkapnya</a>
+      </article>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>Wong lucu Official Store</h4>
+          <div class="muted">Toko online,Kaos Distro Murah.</div>
+          <div style="margin-top:8px">Kontak: <a id="waLink" href="#+6285356866654">WhatsApp:+6285356866654</a></div>
+        </div>
+        <div>
+          <h4>Bantuan</h4>
+          <ul style="list-style:none;padding:0;margin:0">
+            <li><a href="#">Kebijakan Privasi</a></li>
+            <li><a href="#">Syarat & Ketentuan</a></li>
+            <li><a href="#">Pengembalian & Refund</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Ikuti Kami</h4>
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <a href="#">IG:Wong Lucu Official Store</a>
+            <a href="#"></a>
+            <a href="#"></a>
+          </div>
+        </div>
+        <div>
+          <h4>Newsletter</h4>
+          <input id="newsEmail" placeholder="E-mail anda" style="width:100%;padding:8px;margin-bottom:8px" />
+          <button class="btn" onclick="subscribe()">Daftar</button>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:12px" class="muted">© 2025 Wong lucu Official Store</div>
+    </div>
+  </footer>
+
+  <script>
+    /***************
+     * Configuration
+     * Replace WA_NUMBER with your admin WhatsApp number in international format without + or leading zeros.
+     * Example: 6281234567890
+     ***************/
+    const WA_NUMBER = "+6285356866654"; // <-- Ganti dengan nomor WhatsApp admin Anda
+
+    // sample slides
+    const slidesData = [
+      {img:'https://uploads.onecompiler.io/446nzz5ya/446s7d2x6/1000193341.png', title:''},
+      {img:'https://uploads.onecompiler.io/446nzz5ya/446s7d2x6/1000193682.jpg', title:''},
+      {img:'https://uploads.onecompiler.io/446nzz5ya/446s7d2x6/1000193683.jpg', title:''}
+    ];
+
+    // sample product data
+    const products = [
+      {id:1,name:'Kaos Distro Hitam (GHOST) ',price:50000,cat:'Fashion',img:'https://uploads.onecompiler.io/446nzz5ya/446qnu6hu/1000193546.jpg',rating:4.6,sales:120,desc:'Ukuran Sesuaikan Di WhatsApp'},
+      {id:2,name:'Kaos Distro Putih (CARNIVAL)',price:50000,cat:'Fashion',img:'https://uploads.onecompiler.io/446nzz5ya/446qnu6hu/1000193540.jpg',rating:4.4,sales:220,desc:'Ukuran Sesuaikan Di WhatsApp'},
+      {id:3,name:'Kaos Distro Hitam (SIMPLE) ',price:50000,cat:'Fashion',img:'https://uploads.onecompiler.io/446nzz5ya/446qnu6hu/1000193547.jpg',rating:4.8,sales:540,desc:'Ukuran Sesuaikan Di WhatsApp'},
+      {id:4,name:'Kaos Distro Putih (Slowdown)',price:50000,cat:'Fashion',img:'https://uploads.onecompiler.io/446nzz5ya/446qnu6hu/1000193542.jpg',rating:4.2,sales:90,desc:'Ukuran Sesuaikan Di WhatsApp'},
+    ];
+
+    // app state
+    let cart = JSON.parse(localStorage.getItem('wl_cart')||'[]');
+    let currentSection = 'home';
+    let currentProduct = null;
+
+    document.getElementById('waLink').href = `https://wa.me/${'#'}`;
+
+    function updateCartCount(){
+      document.getElementById('cartCount').textContent = cart.reduce((s,i)=>s+i.qty,0);
+      localStorage.setItem('wl_cart', JSON.stringify(cart));
+    }
+
+    function showSection(id){
+      currentSection = id;
+      ['home','catalog','product','cart','account','blog'].forEach(s=>document.getElementById(s).style.display = (s===id)?'':'none');
+      if(id==='home') renderHome();
+      if(id==='catalog') renderProducts();
+      if(id==='cart') renderCart();
+      if(id==='account') renderAccount();
+    }
+
+    function renderSlides(){
+      const el = document.getElementById('slides');
+      el.innerHTML = '';
+      slidesData.forEach((s,i)=>{
+        const d = document.createElement('div');
+        d.className = 'slide';
+        d.style.backgroundImage = `url(${s.img})`;
+        d.style.opacity = i===0?1:0;
+        d.innerHTML = `<div style="padding:18px;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.4)"><h2>${s.title}</h2></div>`;
+        el.appendChild(d);
+      });
+      let idx=0;
+      setInterval(()=>{
+        const slides = el.querySelectorAll('.slide');
+        slides[idx].style.opacity=0;
+        idx=(idx+1)%slides.length;
+        slides[idx].style.opacity=1;
+      },3500);
+    }
+
+    function renderHome(){
+      renderGrid('bestsellers', products.slice().sort((a,b)=>b.sales-a.sales));
+      renderGrid('recommended', products.slice().sort((a,b)=>b.rating-b.rating));
+    }
+
+    function renderGrid(containerId, list){
+      const el = document.getElementById(containerId);
+      el.innerHTML='';
+      list.forEach(p=>{
+        const card = document.createElement('div'); card.className='card';
+        card.innerHTML = `<img src="${p.img}" alt="${p.name}" /><h4>${p.name}</h4><div class="muted">${p.cat} • ⭐ ${p.rating}</div><div class="price">Rp ${numberFormat(p.price)}</div><div style="display:flex;gap:8px;margin-top:8px"><button class="btn" onclick="openProduct(${p.id})">Lihat</button><button onclick="addToCart(${p.id})">Tambah</button></div>`;
+        el.appendChild(card);
+      })
+    }
+
+    function renderProducts(){
+      const grid = document.getElementById('productGrid');
+      const sort = document.getElementById('sortSelect').value;
+      let list = products.slice();
+      if(sort==='price_asc') list.sort((a,b)=>a.price-b.price);
+      if(sort==='price_desc') list.sort((a,b)=>b.price-a.price);
+      if(sort==='popular') list.sort((a,b)=>b.sales-a.sales);
+      grid.innerHTML='';
+      list.forEach(p=>{
+        const c = document.createElement('div'); c.className='card';
+        c.innerHTML = `<img src="${p.img}" alt="${p.name}" /><h4>${p.name}</h4><div class="muted">${p.cat} • ⭐ ${p.rating}</div><div class="price">Rp ${numberFormat(p.price)}</div><div style="display:flex;gap:8px;margin-top:8px"><button class="btn" onclick="openProduct(${p.id})">Detail</button><button onclick="addToCart(${p.id})">Tambah ke Keranjang</button></div>`;
+        grid.appendChild(c);
+      })
+    }
+
+    function numberFormat(n){return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",")}
+
+    function openProduct(id){
+      const p = products.find(x=>x.id===id); if(!p) return;
+      currentProduct = p;
+      showSection('product');
+      const area = document.getElementById('productDetailArea');
+      area.innerHTML = `<div style=\"background:#fff;padding:12px;border-radius:12px;border:1px solid #f0f0f5\">`+
+        `<img id=\"bigimg\" class=\"big\" src=\"${p.img}\" alt=\"${p.name}\" />`+
+        `<div class=\"thumbs\">${[p.img].map(i=>`<img src=\"${i}\" onclick=\"document.getElementById('bigimg').src='${i}'\">`).join('')}</div>`+
+        `</div>`+
+        `<div style=\"background:#fff;padding:12px;border-radius:12px;border:1px solid #f0f0f5\">`+
+        `<h2>${p.name}</h2><div class=\"muted\">${p.cat} • ⭐ ${p.rating}</div><div class=\"price\">Rp ${numberFormat(p.price)}</div>`+
+        `<p>${p.desc}</p>`+
+        `<div style=\"display:flex;gap:8px;align-items:center\">`+
+        `<input id=\"qty\" type=\"number\" value=\"1\" min=\"1\" style=\"width:80px;padding:8px\">`+
+        `<button class=\"btn\" onclick=\"addToCart(${p.id})\">Tambah ke Keranjang</button>`+
+        `</div>`+
+        `<hr><h4>Spesifikasi</h4><ul><li>Berat: 200gr</li><li>Garansi: 1 bulan</li></ul>`+
+        `<h4>Ulasan</h4><div class=\"muted\">Belum ada ulasan. Jadilah yang pertama memberi ulasan!</div>`+
+        `</div>`;
+    }
+
+    function addToCart(id){
+      const p = products.find(x=>x.id===id); if(!p) return;
+      const qtyEl = document.getElementById('qty');
+      const qty = qtyEl?parseInt(qtyEl.value||1):1;
+      const found = cart.find(i=>i.id===id);
+      if(found){found.qty += qty;} else {cart.push({id:p.id,name:p.name,price:p.price,qty:qty})}
+      updateCartCount();
+      alert('Produk ditambahkan ke keranjang');
+    }
+
+    function renderCart(){
+      const el = document.getElementById('cartList');
+      if(cart.length===0){el.innerHTML = '<div class="cart-list">Keranjang kosong</div>'; return}
+      let html = '<div class="cart-list">';
+      cart.forEach(row=>{
+        html += `<div class="cart-row"><div style=\"flex:1\">${row.name}<div class=\"muted\">Rp ${numberFormat(row.price)} x ${row.qty}</div></div><div style=\"display:flex;gap:6px;align-items:center\"><button onclick=\"changeQty(${row.id},-1)\">-</button><div class=\"qty\">${row.qty}</div><button onclick=\"changeQty(${row.id},1)\">+</button><button onclick=\"removeItem(${row.id})\">Hapus</button></div></div>`;
+      });
+      const total = cart.reduce((s,i)=>s+i.price*i.qty,0);
+      html += `<div style=\"padding-top:12px;text-align:right\"><strong>Total: Rp ${numberFormat(total)}</strong></div>`;
+      html += '</div>';
+      el.innerHTML = html;
+    }
+
+    function changeQty(id,delta){
+      const it = cart.find(i=>i.id===id); if(!it) return; it.qty += delta; if(it.qty<1) it.qty=1; updateCartCount(); renderCart();
+    }
+    function removeItem(id){cart = cart.filter(i=>i.id!==id); updateCartCount(); renderCart();}
+
+    function checkout(){
+      if(cart.length===0){alert('Keranjang kosong'); return}
+      const total = cart.reduce((s,i)=>s+i.price*i.qty,0);
+      let text = `Halo Admin Wong lucu, saya ingin memesan:%0A`;
+      cart.forEach(i=>{text += `- ${i.name} x${i.qty} (Rp ${numberFormat(i.price)})%0A`});
+      text += `%0ATotal: Rp ${numberFormat(total)}%0A`;
+      text += `Nama:%0AAlamat:%0ASize:%0AMetode Pembayaran:`;
+      const url = `https://wa.me/${WA_NUMBER}?text=${text}`;
+      window.open(url,'_blank');
+    }
+
+    function fakeLogin(){alert('Fitur demo: akun dibuat secara lokal (tidak nyata).');}
+    function fakeRegister(){alert('Pendaftaran demo berhasil (data tidak tersimpan ke server).');}
+    function renderAccount(){
+      const area = document.getElementById('accountArea');
+      area.innerHTML = '<div style="background:#fff;padding:12px;border-radius:12px;border:1px solid #f0f0f5"><h4>Riwayat Pesanan</h4><div class="muted">(Demo) Belum ada pesanan.</div></div>';
+    }
+
+    function filterCategory(cat){
+      if(cat==='Semua'){showSection('catalog');return}
+      const list = products.filter(p=>p.cat===cat);
+      document.getElementById('catalog').style.display='';
+      document.getElementById('home').style.display='none';
+      const grid = document.getElementById('productGrid'); grid.innerHTML='';
+      list.forEach(p=>{
+        const c = document.createElement('div'); c.className='card';
+        c.innerHTML = `<img src="${p.img}" alt="${p.name}" /><h4>${p.name}</h4><div class="muted">${p.cat} • ⭐ ${p.rating}</div><div class="price">Rp ${numberFormat(p.price)}</div><div style="display:flex;gap:8px;margin-top:8px"><button class="btn" onclick="openProduct(${p.id})">Detail</button><button onclick="addToCart(${p.id})">Tambah ke Keranjang</button></div>`;
+        grid.appendChild(c);
+      })
+    }
+
+    function doSearch(){
+      const q = document.getElementById('searchInput').value.trim().toLowerCase();
+      if(!q) return alert('Masukkan kata kunci untuk pencarian');
+      const results = products.filter(p=>p.name.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q));
+      showSection('catalog');
+      const grid = document.getElementById('productGrid'); grid.innerHTML='';
+      if(results.length===0){grid.innerHTML='<div class="muted">Tidak ada produk yang cocok.</div>';return}
+      results.forEach(p=>{
+        const c = document.createElement('div'); c.className='card';
+        c.innerHTML = `<img src="${p.img}" alt="${p.name}" /><h4>${p.name}</h4><div class="muted">${p.cat} • ⭐ ${p.rating}</div><div class="price">Rp ${numberFormat(p.price)}</div><div style="display:flex;gap:8px;margin-top:8px"><button class="btn" onclick="openProduct(${p.id})">Detail</button><button onclick="addToCart(${p.id})">Tambah ke Keranjang</button></div>`;
+        grid.appendChild(c);
+      })
+    }
+
+    function subscribe(){const e=document.getElementById('newsEmail').value; if(!e) return alert('Masukkan email'); alert('Terima kasih! Kami akan mengirim newsletter ke '+e)}
+
+    // Init
+    renderSlides(); renderHome(); renderProducts(); updateCartCount();
+  </script>
+</body>
+</html>
